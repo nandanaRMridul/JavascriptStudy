@@ -1,5 +1,5 @@
  
-// [ no,district,+ve cases, death rate, curred rate ,1st dose vaccine , 2nd dose vaccine ]
+// [ no,district,+ve cases, death rate, cured rate ,1st dose vaccine , 2nd dose vaccine ]
 
  covid_data = [
     [1, 'Ernakulam', 34000, 2000, 23000, 20000, 2000],
@@ -16,31 +16,34 @@
 // District having Highest +ve case :
 
 console.log((covid_data.reduce((d1, d2) => (d1[2] > d2[2] ? d1 : d2))));
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 // District having Highest 1st dose vaccine 
 console.log((covid_data.reduce((d1, d2) => (d1[5] > d2[5] ? d1 : d2))));
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 // District having lowest death
 console.log((covid_data.reduce((d1, d2) => (d1[3] < d2[3] ? d1 : d2))));
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 // Sort data with +ve case in descending order
 console.log((covid_data.sort((d1, d2) => (d2[2] - d1[2]))))
-// -----------------------------------------------
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 // Is district with +ve cases > 25000
 console.log(covid_data.some((d) => d[2] > 25000))
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 
 /* console.log((covid_data.forEach((d) => (d[2] > 25000 ? d)); */
 
 // Check every district with +ve cases > 25000 or not
 console.log(covid_data.every((d) => d[2] > 25000))
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 // Sort data with 1st dose vaccine
 console.log((covid_data.sort((d1, d2) => (d2[5] - d1[5]))))
-console.log("--------------------")
+console.log("------------------------------------------------------------------------");
 // Print thrissur details
-console.log()
+console.log(covid_data.find((d) => d[1] == "Thrissur"))
+console.log("------------------------------------------------------------------------");
 // Print total number of positive cases
-
-// Print total number of curred cases
+console.log(covid_data.map((d) => d[2]).reduce((d1, d2) => d1 + d2))
+console.log("------------------------------------------------------------------------");
+// Print total number of cured cases
+console.log(covid_data.map((d) => d[4]).reduce((d1, d2) => d1 + d2))
+console.log("------------------------------------------------------------------------");
