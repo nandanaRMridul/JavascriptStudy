@@ -33,9 +33,14 @@ console.log("-------------------------------------------------------------------
 students.forEach(student => {
   let name = student[0];
   let marks = student[1];
-  let avg = marks.reduce((m1, m2) => m1 + m2, 0) / marks.length;
-  console.log(`Name: ${name}, Average Marks: ${avg.toFixed(2)}`);
+  let total = 0;
+  marks.forEach((m) => (total += m));
+  let avg = Math.floor(total / marks.length);
+  console.log(`Name: ${name}, Average Marks: ${avg}`);
 })
+/* 
+ students.forEach((student) => console.log(`${(student[0])} - ${Math.floor((student[1][0] + student[1][1] + student[1][2]) / 3)}`));  */
+
 console.log("------------------------------------------------------------------------");
 
 //2.	Use map to create a new array of student names with their highest score in the format: ["Alice - 90", "Bob - 95", ...].
@@ -76,19 +81,39 @@ console.log("-------------------------------------------------------------------
 
 //5.	Use reduce to calculate the total sum of all students’ scores combined.
 
-summedMarks = students.map((student) => {
+/* summedMarks = students.map((student) => {
   let marks = student[1]; 
   return marks.reduce((m1, m2) => m1 + m2);
 })
 
-console.log(`Total sum: ${summedMarks.reduce((m1, m2) => m1 + m2)}`);
+console.log(`Total sum: ${summedMarks.reduce((m1, m2) => m1 + m2)}`); */
+
+sum = 0;
+
+students.forEach((student) => {
+  let marks = student[1];
+  eachTotal = marks.reduce((m1, m2) => m1 + m2);
+
+  sum += eachTotal;
+})
+
+console.log(sum);
 
 console.log("------------------------------------------------------------------------");
 
 //6.	Use reduceRight to concatenate student names in reverse order into a single string, separated by commas.
 
-let names = students.map((student) => student[0]);
-console.log(names.reduceRight((n1, n2) => n1 +","+ n2));
+/* let names = students.map((student) => student[0]);
+console.log(names.reduceRight((n1, n2) => n1 + "," + n2));
+ */
+let reversedString = students.reduceRight((n1, n2) => {
+  let name = n2[0];
+  return (`${n1},${name}`)
+}, "")
+
+console.log(reversedString);
+
+
 console.log("------------------------------------------------------------------------");
 
 //7.	Use some to check if any student has a perfect score of 100.
