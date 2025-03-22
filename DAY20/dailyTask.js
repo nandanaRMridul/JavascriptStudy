@@ -31,7 +31,9 @@ console.log(
     if (brand.toLowerCase() == "3g") {
     return name;
      }
-   }).map((product) => product.pName))
+ }).map((product) => product.pName))
+   
+ //use forEach
 console.log("-----------------------------------------------------------------------");
 
 // sort mobile based on price - sort
@@ -45,6 +47,7 @@ console.log(
 highestPrice = sortedProducts.reduce((p1, p2) => p1.price > p2.price ? p1 : p2);
 console.log(highestPrice.price);
 console.log("-----------------------------------------------------------------------");
+
 // print low cost mobile
 lowestPrice = sortedProducts.reduce((p1, p2) =>
   p1.price < p2.price ? p1 : p2
