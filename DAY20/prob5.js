@@ -27,13 +27,17 @@ const studentScores = [
 output = {};
 
 studentScores.forEach((eachDetail) => {
-  let name = eachDetail[student]; //name is depreciated key
-  let currentScore = eachDetail[score];
+  let name = eachDetail.student; //name is depreciated keyword so use let
+  let currentScore = eachDetail.score;
 
-  if (student in output) {
-    
+  if (name in output) {//object in operator
+    if (currentScore > output[name]) { //if current score > score stored in output rn (name : score), output[name] = score
+      output[name] = currentScore;
+    }
   }
   else {
     output[name] = currentScore;
   }
 })
+
+console.log(output);

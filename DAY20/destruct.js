@@ -1,7 +1,7 @@
 
 
-let name = { firstName: "Sarath", lastName: "lal" }
+let name = { firstName: "Nandana", lastName: "R", lastName: "Mridul" }
 
-const firstName = name;
+const {firstName} = name;
 
 console.log(firstName);
