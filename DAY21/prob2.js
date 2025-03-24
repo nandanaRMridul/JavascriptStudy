@@ -49,45 +49,87 @@ const accounts = [
 
 // total number of accounts
 console.log(accounts.length);
+console.log(
+  "-----------------------------------------------------------------------"
+);
 
 // print account number whose ac_type is savings
-console.log(accounts.filter((el) => el.ac_type == "saving"))
+console.log(accounts.filter((eachDetail) => eachDetail.ac_type == "saving"))
 
 console.log("-------------------------------------------");
 
 // print the balance of account number 1000
-console.log(accounts.find((el) => el.acno == 1000).balance);
+console.log(accounts.find((eachDetail) => eachDetail.acno == 1000).balance);
 console.log("-------------------------------------------");
 
 // print all phonePay transaction
-console.log(accounts.map((el) => el.transaction).flat(Infinity).filter((el) => el.mode == 'phonePe'));
+console.log(
+  accounts
+    .map((eachDetail) => eachDetail.transaction)
+    .flat(Infinity)
+    .filter((eachDetail) => eachDetail.mode == "phonePe")
+);
 
-
+console.log(
+  "-----------------------------------------------------------------------"
+);
 // print all transactions > 3000
 
-console.log(accounts.map((el)=> el.transaction).flat(Infinity).filter((el)=> el.amount > 3000));
-
+console.log(
+  accounts
+    .map((eachDetail) => eachDetail.transaction)
+    .flat(Infinity)
+    .filter((eachDetail) => eachDetail.amount > 3000)
+);
+console.log(
+  "-----------------------------------------------------------------------"
+);
 // print credit transaction of account 1002(CREDITED TO)
 
-transaction1002 = accounts.map((el) => el.transaction).flat(Infinity).filter((amt) => amt.to == 1002) 
+transaction1002 = accounts
+  .map((eachDetail) => eachDetail.transaction)
+  .flat(Infinity)
+  .filter((eachTr) => eachTr.to == 1002); 
 console.log(transaction1002);
+console.log(
+  "-----------------------------------------------------------------------"
+);
 
 // print total credited amount to 1002
-totalCred = transaction1002.map((elem) => elem.amount).reduce((a, b) => a + b)
+totalCred = transaction1002
+  .map((eachDetail) => eachDetail.amount)
+  .reduce((a1, a2) => a1 + a2);
 console.log(totalCred);
+console.log(
+  "-----------------------------------------------------------------------"
+);
 
 // print debit transaction of 1002
-let debitVar = accounts.find((elem) => elem.acno == 1002).transaction
+let debitVar = accounts.find(
+  (eachDetail) => eachDetail.acno == 1002
+).transaction;
 console.log(debitVar);
+console.log(
+  "-----------------------------------------------------------------------"
+);
 
 // transaction history of 1002
 console.log(...transaction1002, ...debitVar);
+console.log(
+  "-----------------------------------------------------------------------"
+);
 
 // current balance of 1002 (balace +credit amount)
-let balance = accounts.find((eachEl) => eachEl.acno == 1002).balance;
+let balance = accounts.find((eachDetail) => eachDetail.acno == 1002).balance;
 
-console.log(balance+totalCred);
+console.log(balance + totalCred);
+console.log(
+  "-----------------------------------------------------------------------"
+);
+
 // Account with highest balance
-
-let val = accounts.reduce((a, b) => a > b ? a : b)
-console.log(val);
+let highestBalance = accounts.reduce((a1, a2) => a1 > a2 ? a1 : a2)
+console.log(highestBalance);
+console.log(
+  "-----------------------------------------------------------------------"
+);
