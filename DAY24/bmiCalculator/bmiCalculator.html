@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      background-color: #bbd5f8;
+
+      font-family: sans-serif;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 550px;
+      height: 500px;
+      background-color: rgba(255, 255, 255, 0.195);
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .container label {
+      margin: 10px 0;
+      margin-right: 250px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .container input {
+      border: none;
+      border-radius: 40px;
+      height: 30px;
+      width: 300px;
+      background-color: rgba(255, 249, 245, 0.561);
+    }
+
+    .container button {
+      width: 25%;
+      margin-top: 30px;
+      background-color: #82b479;
+      color: white;
+      font-weight: 500;
+      border: none;
+      border-radius: 40px;
+      padding: 5px 15px;
+    }
+
+    ::placeholder {
+      font-size: 14px;
+      padding-left: 16px;
+    }
+
+    #result {
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="container">
+      <img src="img/bmi.png" width="65%">
+      <h2>BMI Calculator</h2>
+      <label for="height">Height</label>
+      <div>
+        <input id="height" type="number" placeholder="Enter your height in cm">
+      </div>
+      <label for="weight">Weight</label>
+      <div>
+        <input id="weight" type="number" placeholder="Enter your weight in kg">
+      </div>
+
+
+      <button onclick="calculateBMI(height, weight)" type="button" class="btn btn-outline-info">Calculate</button>
+
+      <div id="result">
+
+      </div>
+    </div>
+  </section>
+</body>
+<script>
+  const calculateBMI = (height, weight) => {
+    let bmi = weight.value / ((height.value / 100) ** 2);
+    result.innerHTML = `Your BMI is : ${bmi.toFixed(2)}`
+  }
+</script>
+
+</html>
