@@ -1,0 +1,34 @@
+.calc-body{
+  width: 300px;
+  margin: auto;
+  min-height: 400px;
+  box-shadow: 0 8px 50px 7px rgba(0, 0, 0, 0.23);
+  background-color: black;
+  border-radius: 15px;
+}
+
+.calc-screen{
+  padding: 1rem;
+}
+
+#calc-typed{
+  font-size: 2rem;
+  text-align: right;
+  color: #fff;
+}
+
+.calc-button-row{
+  display: table;
+  margin-left: 30px;
+}
+
+.calc-button-row button{
+  border: none;
+  margin: 8px;
+  border-radius: 10px;
+}
+
+.calc-button-row button{
+  display: table-cell;
+  width:15%;
+}
