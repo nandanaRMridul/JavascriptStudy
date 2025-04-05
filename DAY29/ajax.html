@@ -14,7 +14,7 @@
 
 
 <body>
-  <div >
+  <div>
     <h1 class="text-center">TODO LIST</h1>
   </div>
 
@@ -29,13 +29,8 @@
         </tr>
       </thead>
 
-      <tbody>
-        <tr>
-          <td class="py-1">1</td>
-          <td class="py-1">qweqr</td>
-          <td class="py-1">true</td>
-          <td class="py-1">11</td>
-        </tr>
+      <tbody id="result">
+        
       </tbody>
     </table>
   </div>
@@ -56,18 +51,28 @@
 
   //check response from server
   requestObj.onreadystatechange = () => {
-    if (requestObj.readyState == 4 && requestObj.status == 200) {
-      console.log(requestObj.responseText);
+    if (requestObj.readyState == 4) {
+      if (requestObj.status == 200) {
+        let data = JSON.parse(requestObj.responseText);//converts obj of arrays to array with parse to do opp use JSON.stringify
+        data.todos.forEach((eachElement) => {
+          console.log(eachElement);
 
-      let data = JSON.parse(requestObj.responseText);//converts obj of arrays to array with parse to do opp use JSON.stringify
-      console.log(data);
+          result.innerHTML +=`<tr>
+          <td class="py-1">${eachElement.id}</td>
+          <td class="py-1">${eachElement.todo}</td>
+          <td class="py-1">${eachElement.completed}</td>
+          <td class="py-1">${eachElement.userId}</td>
+        </tr>`
 
-    }
-    else {
-      alert("Data not found");
+        })
+      }
+      else {
+        alert("Data not found");
+      }
     }
   }
   //display response
+
 
 </script>
 

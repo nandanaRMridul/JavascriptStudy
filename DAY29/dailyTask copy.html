@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+  <div>
+    <h1 class="text-center">PRODUCT LIST</h1>
+  </div>
+
+  <div class="d-flex align-items-center justify-content-center w-75 mx-auto">
+    <table class="table-bordered table-padded bg-info border border-dark border-3 text-center">
+      <thead>
+        <tr>
+          <th class="px-5 py-1">id</th>
+          <th class="px-5 py-1">title</th>
+          <th class="px-5 py-1">price</th>
+          <th class="px-5 py-1">description</th>
+        </tr>
+      </thead>
+
+      <tbody id="result">
+        
+      </tbody>
+    </table>
+  </div>
+
+</body>
+<script>
+  //AJAX steps
+const reqObject = new XMLHttpRequest();//initialization
+
+reqObject.open('get', 'https://fakestoreapi.com/products');
+reqObject.send();//API call
+
+reqObject.onreadystatechange= () =>{
+  if(reqObject.readyState == 4){
+    if(reqObject.status == 200){
+      let data = JSON.parse(reqObject.responseText);
+
+      data.forEach((eachElement)=>{
+        console.log(eachElement);
+        result.innerHTML +=`<tr>
+          <td>${eachElement.id}</td>
+          <td>${eachElement.title}</td>
+          <td>${eachElement.price}</td>
+          <td>${eachElement.description}</td>
+          </tr>`
+      })
+    }
+     else {
+      alert("Data not found");
+    }
+  }
+}
+
+
+    
+  //display response
+
+</script>
+
+</html>
