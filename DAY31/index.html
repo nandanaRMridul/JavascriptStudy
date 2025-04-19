@@ -9,14 +9,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <title>Product display-4</title>
+  <title>SpiceBox</title>
 </head>
 
 <body>
-  <!-- Navigation-->
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#!">Start Bootstrap</a>
+      <a class="navbar-brand" href="#!">SpiceBox</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
           class="navbar-toggler-icon"></span></button>
@@ -26,22 +26,21 @@
           <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Shop</a>
+              aria-expanded="false">All Recipies</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#!">All Products</a></li>
+              <li><a class="dropdown-item" href="#!">Home cooking</a></li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
               <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-              <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+              <li><a class="dropdown-item" href="#!">New Additions</a></li>
             </ul>
           </li>
         </ul>
         <form class="d-flex">
           <button class="btn btn-outline-dark" type="submit">
             <i class="bi-cart-fill me-1"></i>
-            Cart
-            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            Login
           </button>
         </form>
       </div>
@@ -51,15 +50,17 @@
   <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
       <div class="text-center text-white">
-        <h1 class="display-4 fw-bolder">Shop in style</h1>
-        <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        <h1 class="display-4 fw-bolder">SpiceBox</h1>
+        <p class="lead fw-normal text-white-50 mb-0">Your Guide To Effortless Cooking</p>
       </div>
     </div>
   </header>
   <!-- Section-->
   <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-      <div id="result" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="container px-3 px-lg-4 mt-5 ">
+      <div id="result" class="row gx-3 gx-lg-1row-cols-2 row-cols-md-2 row-cols-xl-2 justify-content-center">
+
+
 
       </div>
     </div>
@@ -70,47 +71,49 @@
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
     </div>
   </footer>
+
 </body>
 <script>
-  fetch('https://fakestoreapi.com/products').then((res) => {//result
-    res.json().then((data) => {//json is also a promise, so .then (.json to convert the result to json)
+  fetch('https://dummyjson.com/recipes').then((res) => {
+    res.json().then((data) => {
       console.log(data);
-      data.forEach(eachElement => {
-        result.innerHTML += `  <div class="col mb-5">
-          <div class="card h-100">
-            <!-- Product image-->
-            <img class="card-img-top" src=${eachElement.image} alt=".." />
-            <!-- Product details-->
-            <div class="card-body p-4">
-              <div class="text-center">
-                <!-- Product name-->
-                <h5
-                 class="fw-bolder">${eachElement.title}</h5>
-                <!-- Product price-->
-                ${eachElement.price}
+      const recipes = data.recipes;//access arrays in recipies object
+      recipes.forEach(recipe => {
+        result.innerHTML += ` <div class="col mb-5">
+          <div style = "width: 100%" class="border rounded-4 card h-90 text-start">
+            <!-- Recipie details-->
+            <div class="card-body h-75 border rounded-4 p-4 text-start bg-warning bg-opacity-75 text-dark">
+              <div class="text-start">
+                <!-- Recipie name-->
+                <h5 class="fw-bolder">${recipe.name}</h5>
+                <!-- Recipie Ingredients-->
+                <h6>Ingredients</h6>
+                <p class ="text-start">${recipe.ingredients}</p>
+                
+                <p class="fw-medium">PrepTime: ${recipe.prepTimeMinutes} mins</p>
+                <p class="fw-medium">CookTime: ${recipe.cookTimeMinutes} mins</p>
               </div>
             </div>
-            <!-- Product actions-->
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><button onclick="onButtonClick(${eachElement.id})" class="btn btn-outline-dark mt-auto" >View options</button></div>
+            <!-- Recipie actions-->
+            <div class="card-footer p-4  border-top-0 bg-transparent">
+              <div class="text-center"><button onclick = "onButtonClick(${recipe.id})" class="btn btn-dark  mt-auto">View Recipie</button></div>
             </div>
           </div>
         </div>`
-      });
-    })
-
-      .catch((reason) => { //.catch 
+          })
+        })
+      }).catch((reason) => {
         console.log(reason);
+      }).catch((err) => {
+        console.log(err);
       })
-  }).catch((err) => {//errors
-    console.log(err);
-  })
-
-  const onButtonClick = (id) => {
-    console.log(id);
-    sessionStorage.setItem("cardId", id) //store id in session storage
-    window.location = 'fetch2.html' //redirect to next page
-  }
-</script>
-
-</html>
+    
+      const onButtonClick = (id) => {
+        console.log(id);
+        sessionStorage.setItem("cardId", id)
+        window.location = 'fetch2.html'
+      }
+    
+    </script>
+    
+    </html>

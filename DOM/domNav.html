@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Navigation</title>
+</head>
+<body>
+
+  <ul id="fruits">
+    <li>Apple</li>
+    <li>Orange</li>
+    <li>Banana</li>
+  </ul>
+
+  <ul id="veggies">
+    <li>Carrots</li>
+    <li>Onions</li>
+    <li>Potatoes</li>
+  </ul>
+
+  <ul id="desserts">
+    <li>Cake</li>
+    <li>Pie</li>
+    <li>Ice cream</li>
+  </ul>
+  
+</body>
+
+<script>
+//-----------firstElementChild-----------
+const element = document.getElementById("fruits");
+
+const firstChild = element.firstElementChild;
+
+firstChild.style.color = "crimson"
+
+const ulElements = document.querySelectorAll("ul")//returns nodelist
+
+ulElements.forEach(ulElement => {
+  const firstChild = ulElement.firstElementChild;
+  firstChild.style.backgroundColor = "plum";
+})
+
+//-----------firstElementChild-----------
+const lastChild = element.lastElementChild;
+lastChild.style.backgroundColor = "lightskyblue"
+
+
+  ulElements.forEach(ulElement => {
+    const lastChild = ulElement.lastElementChild;
+    lastChild.style.backgroundColor = "light green";
+  })
+
+</script>
+</html>

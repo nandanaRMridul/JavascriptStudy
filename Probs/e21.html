@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  <title>DropDown Color</title>
+</head>
+
+<body>
+
+  <div class="d-flex align-items-center justify-content-center min-vh-100">
+    <div class="dropdown">
+      <button id="colorBtn" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Dropdown button
+      </button>
+      <ul id="colors" class="dropdown-menu">
+        <li id="red">Red</li>
+        <li id="blue">Blue</li>
+        <li id="green">Green</li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script>
+  const button = document.getElementById('colorBtn');
+  const colorsList = document.getElementById('colors');
+
+  const selectColor= ()=>{
+    
+  }
+
+  button.addEventListener("click", ()=>{
+
+  })
+
+</script>
+
+</html>
+
+<!-- Create a webpage with a dropdown list and a button. The dropdown list should contain a few color options (e.g., Red, Blue, Green). When the button is clicked:
+ Change the background color of the webpage to the color selected in the dropdown.
+ Display the selected color's name on the webpage. -->

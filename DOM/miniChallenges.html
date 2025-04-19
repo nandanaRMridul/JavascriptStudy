@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  <title>Mini challenges</title>
+</head>
+
+<body>
+
+  <h1 class="mb-5 text-center">Mini DOM Manipulation challenges</h1>
+  <div class="d-flex align-items-center justify-content-center min-vh-100 flex-wrap">
+<!------------------------------------------------------------------------>
+    <div class="d-flex flex-column align-items-center justify-content-center h-50 border border-3 rounded p-5 mb-3">
+      <h3>Hide/Show Message</h3>
+      <p id="text">This is a secret message 👀</p>
+      <button id="toggleBtn" class="btn btn-outline-warning">Hide</button>
+    </div>
+<!------------------------------------------------------------------------>
+    <div class="d-flex flex-column align-items-center justify-content-center h-50 border border-3 rounded p-5 mx-2 mb-3">
+      <h3>Change Text Color Randomly</h3>
+      <p id="colorText">This text can change color</p>
+      <button id="colorBtn" class="btn btn-outline-dark">Change</button>
+    </div>
+<!------------------------------------------------------------------------>
+    <div class="d-flex flex-column align-items-center justify-content-center h-50 border border-3 rounded p-5 mx-2  mb-3">
+      <h3>Mirror Input</h3>
+      <input id="input" type="text">
+      <p id="output"></p>
+    </div>
+<!------------------------------------------------------------------------>
+    <div class="d-flex flex-column align-items-center justify-content-center h-50 border border-3 rounded p-5 mx-2 mb-3">
+      <h3>Change Text Color Randomly</h3>
+      <p id="colorText">This text can change color</p>
+      <button id="colorBtn" class="btn btn-outline-dark">Change</button>
+    </div>
+<!------------------------------------------------------------------------>
+    <div class="d-flex flex-column align-items-center justify-content-center h-50 border border-3 rounded p-5 mx-2  mb-3">
+      <h3>Hide/Show Message</h3>
+      <p id="text">This is a secret message 👀</p>
+      <button id="toggleBtn" class="btn btn-outline-warning">Hide</button>
+    </div>
+<!------------------------------------------------------------------------>
+
+</body>
+
+<script>
+  const showButton = document.getElementById('toggleBtn')
+  const text = document.getElementById('text')
+
+  showButton.addEventListener("click", () => {
+    if (text.style.display === 'none') {
+      text.style.display = 'block';
+      showButton.innerText = 'Hide';
+    } else {
+      text.style.display = 'none';
+      showButton.innerText = 'Show';
+    }
+  })
+//-------------------------------------------------------
+  const colorBtn = document.getElementById('colorBtn')
+  const colorText = document.getElementById('colorText')
+
+  const getRandomColor = () => {
+    let color = "#"
+    let letters = "0123456789ABCDEF"
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)]
+    }
+    return color;
+
+  }
+
+  colorBtn.addEventListener("click", () => {
+    colorText.style.color = getRandomColor();
+  })
+//---------------------------------------------------------
+const input = document.getElementById('input');
+const output = document.getElementById('output');
+
+input.addEventListener("input", ()=> {
+  output.innerText = input.value;
+})
+</script>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html> <!-- all these tags are nodes -->
+<html lang="en"><!--node -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Basics</title><!-- here title is element node and "DOM 1" is text node -->
+</head>
+<body>
+
+<h1 id="heading1">Food</h1>
+  <div class="fruits">Apple</div>
+  <div class="fruits">Orange</div>
+  <div class="fruits">Banana</div>
+
+<h4>Root vegetables</h4>
+<ul>
+  <li>Beets</li>
+  <li>Carrots</li>
+  <li>Potatoes</li>
+</ul>
+
+<h4>Non Root vegetables</h4>
+<ul>
+  <li>Broccoli</li>
+  <li>Celery</li>
+  <li>Tomato</li>
+</ul>
+
+
+</body>
+
+<script>
+console.dir(document);//display all methods of document object
+
+const body = document.body;//access body element directly since it's a property in document object (other eg: title, head)
+body.style.fontFamily = "Arial"
+
+const heading = document.getElementById("heading1")
+heading.style.backgroundColor = "yellow";
+heading.style.fontStyle = "italic";
+heading.style.color= "purple";
+heading.style.textAlign = "center";
+
+
+const fruits = document.getElementsByClassName("fruits");
+
+for(fruit of fruits){//looping
+  fruit.style.backgroundColor = "cyan"
+}
+
+Array.from(fruits).forEach(fruit => {//using array methods
+  fruit.style.color = "purple"
+  fruit.style.fontFamily = "arial"
+  fruit.style.fontWeight = "500"
+  fruit.style.fontStyle= "italic"
+  })
+
+
+  const h4Elements = document.getElementsByTagName("h4");
+
+const listItems = document.getElementsByTagName("li");
+
+  console.log(h4Elements);
+
+  h4Elements[0].style.backgroundColor = "pink";
+  h4Elements[1].style.backgroundColor = "plum";
+
+for(listItem of listItems){
+listItem.style.color = "darkblue";
+}
+
+
+const firstElement = document.querySelector("li")//selects first element
+
+firstElement.style.backgroundColor = "lightgreen"
+
+const firstOfClass = document.querySelector(".fruits")//selects first element of cladd fruits
+
+firstOfClass.style.color ="red";
+
+const veggieNodeList = document.querySelectorAll("li");
+
+veggieNodeList[0].style.fontWeight = "800"
+</script>
+</html>
